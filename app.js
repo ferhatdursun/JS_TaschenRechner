@@ -81,6 +81,8 @@ function reload() {
     reloadButton.addEventListener(click, reload);
 }
 
+
+
 flag_2 = true
 decimal.onclick = () => {
 
@@ -98,20 +100,19 @@ decimal.onclick = () => {
 
 
 
-
 percent.onclick = () => {
-    current_display /= 100
-    üst_yazdir.innerHTML = current_display
+    d = current_display.join("")
+    d = Number(d) / 100
+    üst_yazdir.innerHTML = d
     alt_yazdir.innerHTML = []
 }
-
 
 
 
 flag = false
 pm.onclick = () => {
 
-    // current_display = Number(current_display) * Number("-")
+    // current_display = +(current_display) * ("-1")
     // console.log(current_display);
     // alt_yazdir.innerHTML = current_display
 
@@ -133,7 +134,7 @@ pm.onclick = () => {
     }
 
 
-}
+ }
 
 
 
