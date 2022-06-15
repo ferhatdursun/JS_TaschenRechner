@@ -33,13 +33,12 @@ let operator = [];
 
 
 subtraction.onclick = () => {
-    console.log("subtraction");
     operator = "-";
-    console.log(operator);
     zweiter_number = current_display;
     üst_yazdir.innerHTML = zweiter_number.join("") + operator;
     current_display = [];
     alt_yazdir.innerHTML = current_display;
+
 
 }
 
@@ -59,6 +58,7 @@ multiplication.onclick = () => {
     current_display = [];
     alt_yazdir.innerHTML = current_display;
 
+
 }
 
 division.onclick = () => {
@@ -67,6 +67,7 @@ division.onclick = () => {
     üst_yazdir.innerHTML = zweiter_number.join("") + operator;
     current_display = [];
     alt_yazdir.innerHTML = current_display;
+
 
 }
 
@@ -112,29 +113,27 @@ percent.onclick = () => {
 flag = false
 pm.onclick = () => {
 
-    // current_display = +(current_display) * ("-1")
+    // current_display = +(current_display) * +(-1)
     // console.log(current_display);
     // alt_yazdir.innerHTML = current_display
 
-
-    if (current_display.includes("-")) {
+    if (current_display.includes("-") && current_display != 0) {
         flag = true
-        current_display.shift("-");
+        current_display.shift("-")
         a = current_display.join("")
         console.log(a);
         alt_yazdir.innerHTML = a
     }
+    
 
-    if (flag != true && current_display != 0) {
-
+    else  {
+        flag = false
         current_display.unshift("-");
         a = current_display.join("")
         console.log(a);
         alt_yazdir.innerHTML = a
     }
-
-
- }
+}
 
 
 
@@ -144,32 +143,39 @@ equal.onclick = () => {
     switch (operator) {
         case "+":
             ergebnis = Number(zweiter_number.join("")) + Number(current_display.join(""))
-            console.log(ergebnis);
-            alt_yazdir.innerHTML = []
-            üst_yazdir.innerHTML = ergebnis
+            current_display = []
+            current_display.push(ergebnis);
+            console.log(current_display);
+            alt_yazdir.innerHTML = current_display
+            üst_yazdir.innerHTML = []
             break;
 
         case "-":
-            ergebnis = ergebnis = Number(zweiter_number.join("")) - Number(current_display.join(""))
-            console.log(ergebnis);
-            alt_yazdir.innerHTML = []
-            üst_yazdir.innerHTML = ergebnis
+            ergebnis = Number(zweiter_number.join("")) - Number(current_display.join(""))
+            current_display = []
+            current_display.push(ergebnis);
+            console.log(current_display);
+            alt_yazdir.innerHTML = current_display
+            üst_yazdir.innerHTML = []
             break;
 
         case "*":
-            ergebnis = ergebnis = Number(zweiter_number.join("")) * Number(current_display.join(""))
-            console.log(ergebnis);
-            alt_yazdir.innerHTML = []
-            üst_yazdir.innerHTML = ergebnis
+            ergebnis = Number(zweiter_number.join("")) * Number(current_display.join(""))
+            current_display = []
+            current_display.push(ergebnis);
+            console.log(current_display);
+            alt_yazdir.innerHTML = current_display
+            üst_yazdir.innerHTML = []
             break;
 
         case "/":
-            ergebnis = ergebnis = Number(zweiter_number.join("")) / Number(current_display.join(""))
-            console.log(ergebnis);
-            alt_yazdir.innerHTML = []
-            üst_yazdir.innerHTML = ergebnis
+            ergebnis = Number(zweiter_number.join("")) / Number(current_display.join(""))
+            current_display = []
+            current_display.push(ergebnis);
+            console.log(current_display);
+            alt_yazdir.innerHTML = current_display
+            üst_yazdir.innerHTML = []
             break;
-
         default:
             console.log("hata");
             break;
