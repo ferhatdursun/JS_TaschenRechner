@@ -20,8 +20,7 @@ const decimal = document.querySelector(".decimal");
 const equal = document.querySelector(".equal");
 const üst_yazdir = document.querySelector(".previous-display");
 const alt_yazdir = document.querySelector(".current-display");
-const container = document.querySelector(".buttons-container");
-// const num = document.querySelector(".current-display");
+
 
 let ergebnis;
 
@@ -33,42 +32,48 @@ let operator = [];
 
 
 subtraction.onclick = () => {
+    
     operator = "-";
     zweiter_number = current_display;
     üst_yazdir.innerHTML = zweiter_number.join("") + operator;
     current_display = [];
     alt_yazdir.innerHTML = current_display;
-
-
 }
 
 addition.onclick = () => {
+    if (alt_yazdir && üst_yazdir) {
+        ergebnis = Number(zweiter_number.join("")) + Number(current_display.join(""))
+        current_display = []
+        current_display.push(ergebnis);
+        console.log(current_display);
+        alt_yazdir.innerHTML = current_display
+        üst_yazdir.innerHTML = []
+    }
     operator = "+";
     zweiter_number = current_display;
     üst_yazdir.innerHTML = zweiter_number.join("") + operator;
     current_display = [];
     alt_yazdir.innerHTML = current_display;
-
 }
 
 multiplication.onclick = () => {
+    
+
     operator = "*";
     zweiter_number = current_display;
     üst_yazdir.innerHTML = zweiter_number.join("") + operator;
     current_display = [];
     alt_yazdir.innerHTML = current_display;
 
-
 }
 
 division.onclick = () => {
+    
     operator = "/";
     zweiter_number = current_display;
     üst_yazdir.innerHTML = zweiter_number.join("") + operator;
     current_display = [];
     alt_yazdir.innerHTML = current_display;
-
-
 }
 
 
@@ -86,7 +91,6 @@ function reload() {
 
 flag_2 = true
 decimal.onclick = () => {
-
 
     if (current_display.includes(".")) {
         flag == false;
@@ -117,6 +121,10 @@ pm.onclick = () => {
     // console.log(current_display);
     // alt_yazdir.innerHTML = current_display
 
+    if (alt_yazdir == "") return
+
+
+
     if (current_display.includes("-") && current_display != 0) {
         flag = true
         current_display.shift("-")
@@ -124,9 +132,9 @@ pm.onclick = () => {
         console.log(a);
         alt_yazdir.innerHTML = a
     }
-    
 
-    else  {
+
+    else {
         flag = false
         current_display.unshift("-");
         a = current_display.join("")
@@ -138,9 +146,11 @@ pm.onclick = () => {
 
 
 
+
 equal.onclick = () => {
 
     switch (operator) {
+
         case "+":
             ergebnis = Number(zweiter_number.join("")) + Number(current_display.join(""))
             current_display = []
@@ -176,12 +186,14 @@ equal.onclick = () => {
             alt_yazdir.innerHTML = current_display
             üst_yazdir.innerHTML = []
             break;
+
         default:
             console.log("hata");
             break;
 
     }
 }
+
 
 
 
